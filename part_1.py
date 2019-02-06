@@ -1,3 +1,5 @@
+#PART - 1
+
 import re
 
 def list_ifname_ip(fobj):
@@ -26,6 +28,31 @@ d = list_ifname_ip(fin)
 
 for i,j in d.items():
 	print(i, " ",j)
+
+# PART 2
+
+filein = open("running-config.cfg",'r')
+fileout = open("config_file",'w')
+#reg = re.compile("^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$")
+#ip_addr = []
+for line in filein:
+	#line = line.strip()
+	#word = line.split()
+
+	'''for i in word:
+		if(reg.match(i)):
+			if(('192' in i) or ('172'in i)
+				ip_addr.append(i)'''
+	line = line.replace('192','10')
+	line = line.replace('172','10')
+	line = line.replace('255.255.0.0','255.0.0.0')
+	line = line.replace('255.255.255.0','255.0.0.0')
+	fileout.write(line)
+
+final_file = open("config_file",'r')
+for l in final_file:
+	print(l)
+#print(ip_addr)
 
 
 
